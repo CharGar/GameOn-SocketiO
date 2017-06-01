@@ -46,7 +46,7 @@ if(process.env.MONGODB_URI != undefined) {
     mongoURI = process.env.MONGODB_URI;
 } else {
     // use the local database server
-    mongoURI = 'mongodb://localhost:27017/passport';
+    mongoURI = 'mongodb://localhost:27017/gameon';
 }
 
 // var mongoURI = "mongodb://localhost:27017/passport";
@@ -60,11 +60,11 @@ mongoDB.on('error', function(err){
 });
 
 mongoDB.once('open', function(){
-   console.log("Connected to Mongo, meow!");
+   console.log("Saddle Up Kobe, GET YO GAME ON!");
 });
 
 // App Set //
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 4444));
 
 // Listen //
 app.listen(app.get("port"), function(){

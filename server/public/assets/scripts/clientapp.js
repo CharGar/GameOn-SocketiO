@@ -1,5 +1,5 @@
-var myApp = angular.module('myApp', ['ngRoute']);
-
+var myApp = angular.module('myApp', ['ngRoute','ngMap']);
+console.log("line2");
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   // get rid of 1.6.4 #!
@@ -16,10 +16,10 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/user', {
       templateUrl: '/views/user.html',
-      controller: "UserController as uc"
+      controller: "UserController as vm"
     })
     .otherwise({
-      redirectTo: 'home'
+      redirectTo: '/home'
     });
 
 }]);

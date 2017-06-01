@@ -1,5 +1,18 @@
-<div class="container">
-    <h1 id="welcome" class="lead">Welcome, {{uc.userName}}!</h1>
-    <p>This is the user page!</p>
-    <button class="btn btn-default" ng-click="uc.logout()">Log Out</button>
-</div>
+
+<ng-map default-style="false"
+styles="[{stylers:[{hue:'#4CFF28'},{visibility:'simplified'},{gamma:0.5},{weight:0.5}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#49D8EE'}]}]"
+zoom="12"
+center="current-location"
+default= "44.98034238,-93.26293945">
+<!-- above, centers map over mpls, the higher the zoom level, the closer the zoom -->
+<marker position="44.979527, -93.276157"title="Minneapolis"></marker>
+<marker position="44.85615401, -93.43660712" title="Eden Prairie Lifetime"></marker>
+<marker position="44.979527, -93.276157" title="Target Center Lifetime"></marker>
+<marker position="44.975923, -93.268808" title="Grande Hotel Lifetime"></marker>
+<marker position="44.8897309, -93.4457767" title="Crosstown Eden Priarie Lifetime"></marker>
+<marker position="44.961798, -93.349895" title="St Louis Park Lifetime"></marker>
+
+</ng-map>
+
+<!-- <marker position="10 pennsylvania ave, washington DC" on-click="vm.showCustomMarker()"></marker>
+<marker position="2600 pennsylvania ave, washington DC" on-click="vm.showCustomMarker()"></marker> -->
