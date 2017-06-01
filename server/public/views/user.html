@@ -5,14 +5,33 @@ zoom="12"
 center="current-location"
 default= "44.98034238,-93.26293945">
 <!-- above, centers map over mpls, the higher the zoom level, the closer the zoom -->
-<marker position="44.979527, -93.276157"title="Minneapolis"></marker>
 <marker position="44.85615401, -93.43660712" title="Eden Prairie Lifetime"></marker>
 <marker position="44.979527, -93.276157" title="Target Center Lifetime"></marker>
 <marker position="44.975923, -93.268808" title="Grande Hotel Lifetime"></marker>
 <marker position="44.8897309, -93.4457767" title="Crosstown Eden Priarie Lifetime"></marker>
 <marker position="44.961798, -93.349895" title="St Louis Park Lifetime"></marker>
+<marker id='{{shop.id}}' position="{{shop.position}}"
+        ng-repeat="shop in vm.shops"
+        on-click="vm.showDetail(shop)">
+      </marker>
 
-</ng-map>
+      <info-window id="foo-iw">
+        <div ng-non-bindable="">
+          id: {{vm.shop.id}}<br/>
+          name: {{vm.shop.name}}<br/>
+          Position 1: {{vm.shop.position}}<br/>
+          Position 2: {{anchor.getPosition()}}<br/>
+          Position 3: {{vm.map.markers[vm.shop.id].getPosition()}}<br/>
+          <a href="#" ng-click="vm.clicked()">Click Here</a>
+        </div>
+      </info-window>
+</ng-map
+<button ng-click="vm.showDetail(e, vm.shop)">
+      show InfoWindow of the shop
+    </button>
+    <button ng-click="vm.hideDetail(e, vm.shop)">
+      Hide InfoWindow of the shop
+    </button>
 
 <!-- <marker position="10 pennsylvania ave, washington DC" on-click="vm.showCustomMarker()"></marker>
 <marker position="2600 pennsylvania ave, washington DC" on-click="vm.showCustomMarker()"></marker> -->
