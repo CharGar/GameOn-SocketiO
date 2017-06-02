@@ -1,7 +1,7 @@
 
 <ng-map default-style="false"
 styles="[{stylers:[{hue:'#4CFF28'},{visibility:'simplified'},{gamma:0.5},{weight:0.5}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#49D8EE'}]}]"
-zoom="12"
+zoom="10"
 center="current-location"
 default= "44.98034238,-93.26293945">
 <!-- above, centers map over mpls, the higher the zoom level, the closer the zoom -->
@@ -17,12 +17,12 @@ default= "44.98034238,-93.26293945">
 
       <info-window id="foo-iw">
         <div ng-non-bindable="">
-          id: {{vm.shop.id}}<br/>
-          name: {{vm.shop.name}}<br/>
-          Position 1: {{vm.shop.position}}<br/>
-          Position 2: {{anchor.getPosition()}}<br/>
-          Position 3: {{vm.map.markers[vm.shop.id].getPosition()}}<br/>
-          <a href="#" ng-click="vm.clicked()">Click Here</a>
+          Location: {{vm.shop.Location}}<br/>
+          Next Game: {{vm.shop.nextGame}}<br/>
+          Current Roster:{{vm.shop.roster}}<br/>
+
+          <!-- Position 3: {{vm.map.markers[vm.shop.id].getPosition()}}<br/> -->
+          <a href="#" ng-click="vm.clicked()">Sign Up</a>
         </div>
       </info-window>
 </ng-map
@@ -32,6 +32,3 @@ default= "44.98034238,-93.26293945">
     <button ng-click="vm.hideDetail(e, vm.shop)">
       Hide InfoWindow of the shop
     </button>
-
-<!-- <marker position="10 pennsylvania ave, washington DC" on-click="vm.showCustomMarker()"></marker>
-<marker position="2600 pennsylvania ave, washington DC" on-click="vm.showCustomMarker()"></marker> -->

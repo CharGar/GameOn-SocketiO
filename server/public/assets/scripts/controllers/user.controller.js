@@ -7,12 +7,15 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap', function($htt
     });
 
     vm.clicked = function() {
-      alert('Clicked a link inside infoWindow');
+      alert("You're signed up to play, current roster: 1");
     };
 
     vm.shops = [
-      {id:'foo', name: 'FOO SHOP', position:[41,-87]},
-      {id:'bar', name: 'BAR SHOP', position:[42,-86]}
+      {id:'grand', roster:' 0', Location: 'Grande Hotel Lifetime', nextGame: '11:30am', position:[44.975923, -93.268808]},
+      {id:'cross', roster:' 0', Location: 'Crosstown Lifetime', nextGame: '11:30am', position:[44.8897309, -93.4457767]},
+      {id:'louis', roster:' 0', Location: 'St Louis Park Lifetime', nextGame: '11:30am', position:[44.961798, -93.349895]},
+      {id:'ep', roster:' 0', Location: 'Eden Prairie Lifetime', nextGame: '11:30am', position:[44.85615401, -93.43660712]},
+      {id:'target', roster:' 0', Location: 'Target Center Lifetime', nextGame: '11:30am', position:[44.979527, -93.276157]}
     ];
     vm.shop = vm.shops[0];
 
