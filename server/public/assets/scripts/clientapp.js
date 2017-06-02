@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute','ngMap']);
+var myApp = angular.module('myApp', ['ngRoute','ngMap', 'ngMaterial']);
 console.log("line2");
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {

@@ -1,4 +1,7 @@
-myApp.controller('UserController', ['$http', '$location', 'NgMap', function($http, $location, NgMap) {
+myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
+'$timeout', '$mdSidenav', function($http, $location, NgMap,$scope, $timeout, $mdSidenav)
+  {
+// $mdSidenav
   // This happens after view/controller loads -- not ideal but it works for now.
   var vm = this;
     NgMap.getMap().then(function(map) {
@@ -9,7 +12,15 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap', function($htt
     vm.clicked = function() {
       alert("You're signed up to play, current roster: 1");
     };
+    
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
 
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
     vm.shops = [
       {id:'grand', roster:' 0', Location: 'Grande Hotel Lifetime', nextGame: '11:30am', position:[44.975923, -93.268808]},
       {id:'cross', roster:' 0', Location: 'Crosstown Lifetime', nextGame: '11:30am', position:[44.8897309, -93.4457767]},
@@ -40,6 +51,7 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap', function($htt
       };
     });
   }]);
+
 
   // Upon load, check this user's session on the server
 //   $http.get('/user').then(function(response) {
