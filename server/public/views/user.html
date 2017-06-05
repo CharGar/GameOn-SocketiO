@@ -4,73 +4,67 @@ styles="[{stylers:[{hue:'#4CFF28'},{visibility:'simplified'},{gamma:0.5},{weight
 zoom="10"
 center="current-location"
 default= "44.98034238,-93.26293945">
-<!-- above, centers map over mpls, the higher the zoom level, the closer the zoom -->
-<marker position="44.85615401, -93.43660712" title="Eden Prairie Lifetime"></marker>
-<marker position="44.979527, -93.276157" title="Target Center Lifetime"></marker>
-<marker position="44.975923, -93.268808" title="Grande Hotel Lifetime"></marker>
-<marker position="44.8897309, -93.4457767" title="Crosstown Eden Priarie Lifetime"></marker>
-<marker position="44.961798, -93.349895" title="St Louis Park Lifetime"></marker>
+
 <marker id='{{shop.id}}' position="{{shop.position}}"
-        ng-repeat="shop in vm.shops"
-        on-click="vm.showDetail(shop)">
-      </marker>
+ng-repeat="shop in vm.shops"
+on-click="vm.showDetail(shop)">
+</marker>
+<md-sidenav class="md-sidenav-left" md-component-id="left"
+md-disable-backdrop md-whiteframe="4" style= "background-color: #ff33cc;">
 
-      <info-window id="foo-iw">
-        <div ng-non-bindable="">
-          Location: {{vm.shop.Location}}<br/>
-          Next Game: {{vm.shop.nextGame}}<br/>
-          Current Roster:{{vm.shop.roster}}<br/>
-          <div ng-controller="UserController" layout="column" style="height: 500px;" ng-cloak>
+<md-toolbar class="md-theme-indigo" style = "box-shadow: 2px 2px black;">
+  <h1 class="md-toolbar-tools">Welcome to Roster Chat</h1>
+</md-toolbar>
 
-            <section layout="row" flex>
+<md-content layout-margin style= "background-color: #ff33cc">
 
-              <md-sidenav class="md-sidenav-left" md-component-id="left"
-                          md-disable-backdrop md-whiteframe="4">
+  <md-button ng-click="vm.toggleLeft('left')" class="md-accent" style= "background-color: #000000;">
+    Close Roster Chat
+  </md-button>
+</md-content>
 
-                <md-toolbar class="md-theme-indigo">
-                  <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
-                </md-toolbar>
+</md-sidenav>
+<info-window id="foo-iw" style= "background-color: #000000; box-shadow: 2px 2px black;">
+  <div ng-non-bindable="" style= "background-image: {{vm.shop.image}}; background-size:100%; background-repeat: no-repeat; background-position: center; box-shadow: 2px 2px black;">
+  <ul>
+    <li><p>Location: {{vm.shop.Location}}</p></li>
+    <li><p>Next Game: {{vm.shop.nextGame}}</p></li>
+    <li><p>Current Roster:{{vm.shop.roster}}</p></li>
+  </li>
 
-                <md-content layout-margin>
-                  <p>
-                    This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
-                  </p>
-                  <md-button ng-click="toggleLeft()" class="md-accent">
-                    Close this Sidenav
-                  </md-button>
-                </md-content>
 
-              </md-sidenav>
+    <div layout="column" style="height: 150px;" style= "background-color: #000000;"ng-cloak>
+      <!-- /*<style = 'background-image' '{{vm.shop.image}}'</style>*/ -->
+    <!-- <ng-style = "{'background-image': '{{vm.shop.image}}'}; background-size:contain;"> -->
+      <section layout="row" flex>
 
-              <md-content flex layout-padding>
 
-                <div layout="column" layout-align="top center">
-                  <p>
-                    Developers can also disable the backdrop of the sidenav.<br/>
-                    This will disable the functionality to click outside to close the sidenav.
-                  </p>
 
-                  <div>
-                    <md-button ng-click="toggleLeft()" class="md-raised">
-                      Toggle Sidenav
-                    </md-button>
-                  </div>
+        <!-- <md-content flex layout-padding> -->
+          <ng-style = "{'background-image': '{{vm.shop.image}}'}; box-shadow: 2px 2px black;">
+          <div layout="column" layout-align="bottom center" style= "background-color:none; z-index: 3;">
 
-                </div>
+              <md-button style='margin-top: 90%; background-position: fixed' ng-click="vm.toggleLeft('left')" class=" md md-raised">
+                Open Roster Chat
+              </md-button>
 
-              </md-content>
-
-            </section>
 
           </div>
-          <!-- Position 3: {{vm.map.markers[vm.shop.id].getPosition()}}<br/> -->
-          <!-- <a href="#" ng-click="vm.clicked()">Sign Up</a> -->
-        </div>
-      </info-window>
-</ng-map
-<button ng-click="vm.showDetail(e, vm.shop)">
-      show InfoWindow of the shop
-    </button>
-    <button ng-click="vm.hideDetail(e, vm.shop)">
-      Hide InfoWindow of the shop
-    </button>
+
+        <!-- </md-content> -->
+
+      </section>
+
+
+      <!-- Position 3: {{vm.map.markers[vm.shop.id].getPosition()}}<br/> -->
+      <!-- <a href="#" ng-click="vm.clicked()">Sign Up</a> -->
+    </div>
+  </info-window>
+  </ng-map
+  <button ng-click="vm.showDetail(e, vm.shop)">
+
+  </button>
+  <button ng-click="vm.hideDetail(e, vm.shop)">
+
+  </button>
+</div>

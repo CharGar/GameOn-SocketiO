@@ -1,6 +1,13 @@
 body{
-  background-image: url('https://www.youtube.com/watch?v=AoB8C_L8F_M');
-  z-index: -1;
+  background-image: url('eplt.jpg');
+  background-size:100%;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+p{
+  color: black;
+  text-shadow: 2px 2px 2px white;
+  text-align: center;
 }
 
 ng-map {
@@ -44,34 +51,9 @@ h1{
 
 }
 
-/*#entryForm {
-    margin-top: 14px;
-}*/
-
-/*#container {
-    margin-top: 10px;
+.element.style{
+  background-color: yellow;
 }
-
-.container p{
-    margin-top : 14px;
+.md{
+  background-color: teal;
 }
-
-.message {
-    padding: 10px 0;
-}
-
-.message p {
-    margin-left: 10px;
-}*/
-
-/*.message:nth-child(odd) {
-     background-color: #eeeeee;
-}
-
-.message:nth-child(even) {
-    background-color: #f8f8f8;
-}
-
-.btn-danger{
-    margin-left: 10px;
-}*/
