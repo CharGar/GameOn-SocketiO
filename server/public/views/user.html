@@ -10,61 +10,63 @@ ng-repeat="shop in vm.shops"
 on-click="vm.showDetail(shop)">
 </marker>
 <md-sidenav class="md-sidenav-left" md-component-id="left"
-md-disable-backdrop md-whiteframe="4" style= "background-color: #ff33cc;">
+ md-disable-backdrop md-whiteframe="4" style= "background-color: white; opacity:.9;">
 
 <md-toolbar class="md-theme-indigo" style = "box-shadow: 2px 2px black;">
-  <h1 class="md-toolbar-tools">Welcome to Roster Chat</h1>
+  <h1 style= 'text-align:center; background-color: #000000; color: orange; text-shadow: 1px 1px 1px white; font-fmaily: Sigmar+One;'class="md-toolbar-tools">
+    Welcome to Roster Chat</h1>
 </md-toolbar>
+<input ng-model="vm.description" type="text" name="alias" value="" placeholder="message...">
+  <button ng-click = "vm.addItem()" class = 'btn btn-success' type="button" name="button">Send Message</button>
+<md-content layout-margin style= "background-color: #000000;">
 
-<md-content layout-margin style= "background-color: #ff33cc">
-
-  <md-button ng-click="vm.toggleLeft('left')" class="md-accent" style= "background-color: #000000;">
+  <md-button ng-click="vm.toggleLeft('left')" class="md-accent" style= "background-color: #000000; color:orange; text-align:center;">
     Close Roster Chat
   </md-button>
 </md-content>
 
 </md-sidenav>
-<info-window id="foo-iw" style= "background-color: #000000; box-shadow: 2px 2px black;">
-  <div ng-non-bindable="" style= "background-image: {{vm.shop.image}}; background-size:100%; background-repeat: no-repeat; background-position: center; box-shadow: 2px 2px black;">
-  <ul>
-    <li><p>Location: {{vm.shop.Location}}</p></li>
-    <li><p>Next Game: {{vm.shop.nextGame}}</p></li>
-    <li><p>Current Roster:{{vm.shop.roster}}</p></li>
-  </li>
+<info-window id="foo-iw" style= "background-color: #000000;">
+  <div ng-non-bindable="" style= "background-image: {{vm.shop.image}}; background-size:100%; background-repeat: no-repeat; background-position: center; margin-left:20px;">
+    <ul>
+      <li><p>Location: {{vm.shop.Location}}</p></li>
+      <li><p>Next Game: {{vm.shop.nextGame}}</p></li>
+      <li><p class= 'whatever'>Current Roster:{{vm.shop.roster}}</p></li>
+    </li>
 
 
-    <div layout="column" style="height: 150px;" style= "background-color: #000000;"ng-cloak>
+    <div class layout="column" style="height: 170px;" style= "background-color: none" ng-cloak>
       <!-- /*<style = 'background-image' '{{vm.shop.image}}'</style>*/ -->
-    <!-- <ng-style = "{'background-image': '{{vm.shop.image}}'}; background-size:contain;"> -->
-      <section layout="row" flex>
+      <!-- <ng-style = "{'background-image': '{{vm.shop.image}}'}; background-size:contain;"> -->
+      <!-- <section layout="row" flex> -->
 
 
 
         <!-- <md-content flex layout-padding> -->
-          <ng-style = "{'background-image': '{{vm.shop.image}}'}; box-shadow: 2px 2px black;">
+        <ng-style = "{'background-image': '{{vm.shop.image}}'}; margin-bottom: 20px;">
           <div layout="column" layout-align="bottom center" style= "background-color:none; z-index: 3;">
 
-              <md-button style='margin-top: 90%; background-position: fixed' ng-click="vm.toggleLeft('left')" class=" md md-raised">
-                Open Roster Chat
-              </md-button>
+            <md-button style='margin-top: 90%; background-position: fixed; background-color: #99ff33'; ng-click="vm.toggleLeft('left')" class=" md md-raised">
+              Open Roster Chat
+            </md-button>
 
 
           </div>
 
-        <!-- </md-content> -->
+          <!-- </md-content> -->
 
-      </section>
+        <!-- </section> -->
 
 
-      <!-- Position 3: {{vm.map.markers[vm.shop.id].getPosition()}}<br/> -->
-      <!-- <a href="#" ng-click="vm.clicked()">Sign Up</a> -->
-    </div>
-  </info-window>
-  </ng-map
-  <button ng-click="vm.showDetail(e, vm.shop)">
+        <!-- Position 3: {{vm.map.markers[vm.shop.id].getPosition()}}<br/> -->
+        <!-- <a href="#" ng-click="vm.clicked()">Sign Up</a> -->
+      </div>
+    </info-window>
+    </ng-map
+    <button ng-click="vm.showDetail(e, vm.shop)">
 
-  </button>
-  <button ng-click="vm.hideDetail(e, vm.shop)">
+    </button>
+    <button ng-click="vm.hideDetail(e, vm.shop)">
 
-  </button>
-</div>
+    </button>
+  </div>

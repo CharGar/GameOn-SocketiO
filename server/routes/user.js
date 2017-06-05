@@ -26,6 +26,28 @@ router.get('/logout', function(req, res) {
   req.logOut();
   res.sendStatus(200);
 });
+router.post('/AddItem', function(req,res){
+  console.log('newItem ->', req.body);
+  var newItem = new itemModel(req.body);
 
+  newItem.save(function(err) {
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+      console.log('Item bad!!! errrrrrr');
+    }else{
+      console.log('successful Item created');
+      res.sendStatus(201);
+    }
+  });
+})
+
+router.get('/getItems', function(req, res){
+  console.log('in Router.GET', res);
+  itemModel.find().then(function(data){
+    console.log(data);
+    res.send(data);
+  })
+})
 
 module.exports = router;

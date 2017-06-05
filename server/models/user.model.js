@@ -8,7 +8,10 @@ var UserSchema = new Schema({
     username: {type: String, required: true, index: {unique: true}},
     password: {type: String, required: true}
 });
-
+var itemsSchema = new Schema({
+    message: String,
+    user: String
+});
 // Called before adding a new user to the DB. Encrypts password.
 UserSchema.pre('save', function(next) {
     var user = this;
@@ -46,4 +49,11 @@ UserSchema.methods.comparePassword = function(candidatePassword, callback) {
 };
 
 
-module.exports = mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema);
+
+var Item = mongoose.model('items', itemsSchema);
+
+module.exports = {
+  userModel: User,
+  itemModel: Item
+};
