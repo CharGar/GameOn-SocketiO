@@ -9,8 +9,9 @@ var UserSchema = new Schema({
     password: {type: String, required: true}
 });
 var itemsSchema = new Schema({
-    message: String,
-    user: String
+    item: String,
+    user: String,
+    location: String
 });
 // Called before adding a new user to the DB. Encrypts password.
 UserSchema.pre('save', function(next) {

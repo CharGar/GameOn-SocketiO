@@ -8,10 +8,6 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
       vm.map = map;
     });
 
-    vm.clicked = function() { //click alert, likely to remove
-      alert("You're signed up to play, current roster: 1");
-    };// end click alert
-
     // vm.toggleLeft = buildToggler('left');
     // vm.toggleRight = buildToggler('right');
 
@@ -21,10 +17,11 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
       });
     }
 
-    vm.toggleLeft = function(componentId) { //angular slide toggle start
-      console.log(componentId);
+    vm.toggleLeft = function(componentId, id) { //angular slide toggle start
+      console.log(componentId, id);
         $mdSidenav(componentId).toggle().then(function() {
           console.log('is open?', $mdSidenav(componentId).isOpen());
+          vm.getItems(id);
         });
     } //angular slide toggle end
 
@@ -96,13 +93,13 @@ $http.get('/user').then(function(response) {
   //     $location.path("/home");
   //   });
   // } //end logout function
-
-  vm.addItem = function(){
+vm.items = {shelfItems: []};
+  vm.addItem = function(location){
     console.log('in add items!');
     var itemToSend = {
-      description: vm.description,
-      imgURL: vm.imgURL,
-      user: vm.userName
+      item: vm.description,
+      user: vm.userName,
+      location: location
     }
     console.log('this is the itemTOsend', itemToSend);
     $http({
@@ -111,13 +108,19 @@ $http.get('/user').then(function(response) {
       data: itemToSend
     }).then(function(res) {
       console.log('get after add in controller', res);
+vm.description = '';//this resets the text input field to empty
       // location.reload();
-      getService.getItems();
+      getService.getItems(itemToSend.location).then(function(data){
+        vm.items.shelfItems = data;
+      });
     });
   };
-
-
-
+  vm.getItems = function(location){
+  getService.getItems(location).then(function(data){
+    vm.items.shelfItems = data;
+  });
+};
+// vm.getItems();
 
 
 }]);
