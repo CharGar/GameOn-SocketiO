@@ -109,11 +109,16 @@ vm.items = {shelfItems: []};
     }).then(function(res) {
       console.log('get after add in controller', res);
 vm.description = '';//this resets the text input field to empty
+setInterval(function() {
+
+
       // location.reload();
       getService.getItems(itemToSend.location).then(function(data){
         vm.items.shelfItems = data;
       });
+    }, 2000);
     });
+
   };
   vm.getItems = function(location){
   getService.getItems(location).then(function(data){
