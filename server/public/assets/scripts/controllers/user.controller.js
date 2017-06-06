@@ -109,7 +109,8 @@ vm.items = {shelfItems: []};
     }).then(function(res) {
       console.log('get after add in controller', res);
 vm.description = '';//this resets the text input field to empty
-setInterval(function() {
+clearInterval(myInterval);
+var myInterval = setInterval(function() {
 
 
       // location.reload();
