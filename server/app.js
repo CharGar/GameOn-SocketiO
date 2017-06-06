@@ -43,7 +43,7 @@ var mongoURI = '';
 // are running on Heroku
 if(process.env.MONGODB_URI != undefined) {
     // use the string value of the environment variable
-    mongoURI = process.env.MONGODB_URI;
+    mongoURI = 'mongodb://heroku_zfpzjglk:hs722vv0kst5p17lepeq65eb3r@ds111882.mlab.com:11882/heroku_zfpzjglk';
 } else {
     // use the local database server
     mongoURI = 'mongodb://localhost:27017/gameon';
