@@ -109,24 +109,32 @@ vm.items = {shelfItems: []};
     }).then(function(res) {
       console.log('get after add in controller', res);
 vm.description = '';//this resets the text input field to empty
-clearInterval(myInterval);
-var myInterval = setInterval(function() {
+
 
 
       // location.reload();
-      getService.getItems(itemToSend.location).then(function(data){
-        vm.items.shelfItems = data;
-      });
-    }, 2000);
+      // setInterval(function(loaction, data, id) {
+
+
+
     });
 
   };
+
   vm.getItems = function(location){
   getService.getItems(location).then(function(data){
     vm.items.shelfItems = data;
   });
 };
-// vm.getItems();
+// vm.getItems(vm.currentLocation);
 
+
+setInterval(function() {
+  getService.getItems(vm.shop.id).then(function(data){
+
+      vm.items.shelfItems = data;
+
+  });
+}, 1000, 1);
 
 }]);
