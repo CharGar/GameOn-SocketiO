@@ -87,11 +87,7 @@ $http.get('/user').then(function(response) {
       }
   });
 
-  // vm.logout = function() {
-  //   $http.get('/user/logout').then(function(response) {
-  //     console.log('logged out');
-  //     $location.path("/home");
-  //   });
+
   // } //end logout function
 vm.items = {shelfItems: []};
   vm.addItem = function(location){
@@ -112,11 +108,6 @@ vm.description = '';//this resets the text input field to empty
 
 
 
-      // location.reload();
-      // setInterval(function(loaction, data, id) {
-
-
-
     });
 
   };
@@ -126,7 +117,6 @@ vm.description = '';//this resets the text input field to empty
     vm.items.shelfItems = data;
   });
 };
-// vm.getItems(vm.currentLocation);
 
 
 setInterval(function() {

@@ -30,17 +30,21 @@ router.get('/logout', function(req, res) {
 router.post('/AddItem', function(req,res){
   console.log('newItem ->', req.body);
   var newItem = new itemModel(req.body);
-
-  newItem.save(function(err) {
-    if(err){
-      console.log(err);
-      res.sendStatus(500);
-      console.log('Message bad!!! errrrrrr');
-    }else{
-      console.log('successful Item created');
-      res.sendStatus(201);
-    }
-  });
+  if (req.isAuthenticated() ) {
+    newItem.save(function(err) {
+      if(err){
+        console.log(err);
+        res.sendStatus(500);
+        console.log('Message bad!!! errrrrrr');
+      }else{
+        console.log('successful Item created');
+        res.sendStatus(201);
+      }
+    });
+  } else {
+    console.log('User id did', req.body.user, 'not match with ', req.user._id)
+    res.sendStatus(403);
+  }
 })
 
 router.get('/getItems/:location', function(req, res){

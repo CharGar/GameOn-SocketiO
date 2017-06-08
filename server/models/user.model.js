@@ -9,7 +9,7 @@ var UserSchema = new Schema({
     password: {type: String, required: true}
 });
 var itemsSchema = new Schema({
-    item: String,
+    item: { type: String, required: true },
     user: String,
     location: String
 });

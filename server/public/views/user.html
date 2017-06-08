@@ -1,37 +1,44 @@
 <!-- Google Maps Geo location and Styles  -->
 
-  <ng-map default-style="false"
-  styles="[{stylers:[{hue:'#4CFF28'},{visibility:'simplified'},{gamma:0.5},{weight:0.5}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#49D8EE'}]}]"
-  zoom="10"
-  center="current-location"
-  default= "44.98034238,-93.26293945">
-  <!-- Drops all pins in vm.shops array of objects using ng-repeat-->
-  <marker id='{{shop.id}}' position="{{shop.position}}"
-  ng-repeat="shop in vm.shops"
-  on-click="vm.showDetail(shop)">
+<ng-map default-style="false"
+styles="[{stylers:[{hue:'#4CFF28'},{visibility:'simplified'},{gamma:0.5},{weight:0.5}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#49D8EE'}]}]"
+zoom="10"
+center="current-location"
+default= "44.98034238,-93.26293945">
+<!-- Drops all pins in vm.shops array of objects using ng-repeat-->
+<marker id='{{shop.id}}' position="{{shop.position}}"
+ng-repeat="shop in vm.shops"
+on-click="vm.showDetail(shop)">
 </marker>
 <md-sidenav class="md-sidenav-left" md-component-id="left"
- md-disable-backdrop md-whiteframe="4" style= "background-color: white; opacity:.9;">
+md-disable-backdrop md-whiteframe="4" style= "background-color: white; opacity:.9;">
 
 <!--Roster Chat Window -->
-<md-toolbar class="md-theme-indigo" style = "box-shadow: 2px 2px black;">
+<md-toolbar class="md-theme-indigo" style = "box-shadow: 2px 2px black; text-align: center;">
   <h1 style= 'text-align:center; background-color: #000000; color: orange; text-shadow: 1px 1px 1px white; font-fmaily: Sigmar+One;'class="md-toolbar-tools">
     Welcome to Roster Chat</h1>
   </md-toolbar>
-  <input ng-model="vm.description" type="text" name="alias" value="" placeholder="message...">
-  <button ng-click = "vm.addItem(vm.shop.id)" class = 'btn btn-success' type="button" name="button">Send Message</button>
-  <md-content layout-margin style= "background-color: #000000;">
 
-    <!-- Button to toggle roster chat and/or slide it back to the left and out of view -->
-    <md-button ng-click="vm.toggleLeft('left')" class="md-accent" style= "color:orange; text-align:center;">
-      Close Roster Chat
-    </md-button>
-    <!-- ng-repeat that appends both the username and the users message to rosterchat window -->
-    <div class = 'shelfItems' ng-repeat='item in vm.items.shelfItems' style='color:red; font-size: 30px;'>
-      <p style='color:orange; font-size: 10px; float: left; text-shadow: 0px 0px;'>{{item.user}}:&nbsp</p>
-      <p style='color:orange; font-size: 10px; float: left; text-shadow: 0px 0px;'>{{item.item}}</p><br>
+  <!-- chat div  -->
+  <div class="input-group">
+      <input ng-model="vm.description" name="alias" placeholder="message..." style = "border:1px solid grey;" type="text" class="form-control" id="rosterChat" placeholder="message...">
+<span class="input-group-btn">
+      <button ng-click = "vm.addItem(vm.shop.id)" class = 'btn btn-success' type="button" name="button">Send Message</button>
+</span>
     </div>
-  </md-content>
+  <!-- <md-content layout-margin style= "background-color: none;"> -->
+
+  <!-- Button to toggle roster chat and/or slide it back to the left and out of view -->
+  <md-button class = 'btn btn-danger' style='background-color: tomato; border-radius: 5px 5px 5px 5px; color: white;' ng-click="vm.toggleLeft('left')">
+    Close Roster Chat
+  </md-button>
+
+  <!-- ng-repeat that appends both the username and the users message to rosterchat window -->
+  <div class = 'shelfItems' ng-repeat='item in vm.items.shelfItems' style='color:red; font-size: 30px;'>
+    <p style='color:black; font-size: 12px; float: left;'>{{item.user}}:&nbsp</p>
+    <p style='color:orange; font-size: 12px; float: left;'>{{item.item}}</p><br>
+  </div>
+  <!-- </md-content> -->
 </md-sidenav>
 
 <!-- This is the info window that pops up when you click on a pin and displays the location, next game and current roster -->
