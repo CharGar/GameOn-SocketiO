@@ -1,10 +1,9 @@
 myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
 '$timeout', '$mdSidenav', 'getService', function($http, $location, NgMap,$scope, $timeout, $mdSidenav, getService){
 
-
   var vm = this;// calling google maps
     NgMap.getMap().then(function(map) {
-      console.log('map', map);
+      // console.log('map', map);
       vm.map = map;
     });
 
@@ -14,35 +13,83 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
     vm.test = function(e, shop) {
       vm.shop = shop;
       $mdSidenav('left').toggle().then(function() {
+
       });
     }
 
     vm.toggleLeft = function(componentId, id) { //angular slide toggle start
-      console.log(componentId, id);
+      // console.log(componentId, id);
         $mdSidenav(componentId).toggle().then(function() {
-          console.log('is open?', $mdSidenav(componentId).isOpen());
+          // console.log('is open?', $mdSidenav(componentId).isOpen());
           vm.getItems(id);
+          document.getElementById('scrollBox').scrollTop = 1000000000000000;
         });
     } //angular slide toggle end
 
     vm.shops = [ //array of basketball location objects
-      {id:'grand', image:"url('/assets/styles/ghlt.jpg')", roster:' 0', Location: 'Grande Hotel Lifetime', nextGame: '11:30am', position:[44.975923, -93.268808]},
-      {id:'cross', image:"url('/assets/styles/ctlt.jpg')", roster:' 0', Location: 'Crosstown Lifetime', nextGame: '11:30am', position:[44.8897309, -93.4457767]},
-      {id:'louis', image:"url('/assets/styles/splt.jpg')", roster:' 0', Location: 'St Louis Park Lifetime', nextGame: '11:30am', position:[44.961798, -93.349895]},
-      {id:'ep', image:"url('/assets/styles/eplt.jpg')", roster:' 0', Location: 'Eden Prairie Lifetime', nextGame: '11:30am', position:[44.85615401, -93.43660712]},
-      {id:'target', image:"url('/assets/styles/tclt.jpg')", roster:' 0', Location: 'Target Center Lifetime', nextGame: '11:30am', position:[44.979527, -93.276157]}
+      {id:'grand',  image:"url('/assets/styles/ghlt.jpg')", roster:' 0', Location: 'Grande Hotel', nextGame: '11:30am', position:[44.975923, -93.268808], times: [
+      	[], // Sunday
+        ['6:00am', '11:30am', '5:00pm'], // Monday
+        [], // Tuesday
+        ['6:00am', '11:30pm'], // Wednesday
+        [], // Thursday
+        ['6:00am', '11:30am'], // Friday
+      	[] // Saturday
+      ], address:'615 2nd Ave S, Minneapolis, MN 55402'},
+      {id:'cross',  image:"url('/assets/styles/ctlt.jpg')", roster:' 0', Location: 'Crosstown', nextGame: '11:30am', position:[44.8897309, -93.4457767], times: [
+      	[], // Sunday
+        ['6:00am', '11:30am', '5:00pm'], // Monday
+        [], // Tuesday
+        ['6:00am', '11:30pm'], // Wednesday
+        [], // Thursday
+        ['6:00am', '11:30am'], // Friday
+      	[] // Saturday
+      ], address:'6233 Baker Rd, Eden Prairie, MN 55346'},
+      {id:'louis',  image:"url('/assets/styles/splt.jpg')", roster:' 0', Location: 'St Louis Park', nextGame: '11:30am', position:[44.961798, -93.349895],times: [
+      	[], // Sunday
+        ['6:00am', '11:30am', '5:00pm'], // Monday
+        [], // Tuesday
+        ['6:00am', '11:30pm'], // Wednesday
+        [], // Thursday
+        ['6:00am', '11:30am'], // Friday
+      	[] // Saturday
+      ],address:'5525 Cedar Lake Rd, St Louis Park, MN 55416'},
+      {id:'ep', image:"url('/assets/styles/eplt.jpg')", roster:' 0', Location: 'Eden Prairie', nextGame: '11:30am', position:[44.85615401, -93.43660712], times: [
+      	[], // Sunday
+        ['6:00am', '11:30am', '5:00pm'], // Monday
+        [], // Tuesday
+        ['6:00am', '11:30pm'], // Wednesday
+        [], // Thursday
+        ['6:00am', '11:30am'], // Friday
+      	[] // Saturday
+      ],address:'755 Prairie Center Dr, Eden Prairie, MN 55344'},
+      {id:'target', image:"url('/assets/styles/tclt.jpg')", roster:' 0', Location: 'Target Center', nextGame: '11:30am', position:[44.979527, -93.276157],times: [
+      	[], // Sunday
+        ['6:00am', '11:30am', '5:00pm'], // Monday
+        [], // Tuesday
+        ['6:00am', '11:30pm'], // Wednesday
+        [], // Thursday
+        ['6:00am', '11:30am'], // Friday
+      	[] // Saturday
+      ],address:'600 N 1st Ave, Minneapolis, MN 55403'}
     ];// end location objects
     vm.shop = vm.shops[0];
 
     vm.showDetail = function(e, shop) {//need to review and possibly remove
       vm.shop = shop;
-      vm.map.showInfoWindow('foo-iw', shop.id);
+      vm.map.showInfoWindow('map-canvas', shop.id);
+      var today = moment();
+      var dow = today.day(); // number 0 through 6
+
+      vm.gameTimeArray = vm.shop.times[dow]; // The array of times for that day of the week
+
+
     };
 
     vm.hideDetail = function() { //need to review and possible remove
-      vm.map.hideInfoWindow('foo-iw');
+      vm.map.hideInfoWindow('map-canvas');
     };
-  console.log('checking user');
+  // console.log('checking user');
 
     NgMap.getMap().then(function(map) {
 
@@ -59,7 +106,7 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
       if(response.data.username) {
           // user has a curret session on the server
           vm.userName = response.data.username;
-          console.log('User Data: ', vm.userName);
+          // console.log('User Data: ', vm.userName);
       } else {
           // user has no session, bounce them back to the login page
           $location.path("/home");
@@ -69,7 +116,7 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
 
   vm.logout = function() {//start 'logout' logic
     $http.get('/user/logout').then(function(response) {
-      console.log('logged out');
+      // console.log('logged out');
       $location.path("/home");
     });
   }//end logout logic
@@ -91,21 +138,24 @@ $http.get('/user').then(function(response) {
   // } //end logout function
 vm.items = {shelfItems: []};
   vm.addItem = function(location){
-    console.log('in add items!');
+
+    // console.log('in add items!');
     var itemToSend = {
       item: vm.description,
       user: vm.userName,
       location: location
     }
-    console.log('this is the itemTOsend', itemToSend);
+    // console.log('this is the itemTOsend', itemToSend);
     $http({
       method:'POST',
       url:'/user/AddItem',
       data: itemToSend
     }).then(function(res) {
-      console.log('get after add in controller', res);
+      // console.log('get after add in controller', res);
 vm.description = '';//this resets the text input field to empty
-
+setTimeout(function () {
+  document.getElementById('scrollBox').scrollTop = 1000000000000000;
+}, 1000);
 
 
     });
@@ -124,7 +174,15 @@ setInterval(function() {
 
       vm.items.shelfItems = data;
 
+
+
   });
 }, 1000, 1);
+
+
+
+
+
+
 
 }]);

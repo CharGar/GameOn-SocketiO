@@ -1,8 +1,42 @@
+.ng-map-info-window {
+  margin-top:20px!important;
+    background-color: black!important;
+    opacity: .7;
+    color: #fff;
+    border-radius: 30px 30px 30px 30px !important;
+    /*width: 400px !important;
+    height: 400px !important;*/
+
+  }
+  .ng-map-info-window div:first-child > div:nth-child(1) {
+    border-top-color: black !important;
+    opacity: .7;
+  }
+  .ng-map-info-window div:first-child > div:nth-child(3) div {
+    z-index: -50!important;
+    background-color: transparent !important;
+  }
+  .ng-map-info-window div:first-child > div:nth-child(4) {
+    background-color: transparent !important;
+    z-index: -50!important;
+  }
+
+  li{
+  font-size: 20px !important;
+  font-weight: bolder;
+}
 body{
   background-color: black;
   background-size:100%;
   background-repeat:no-repeat;
   background-position: center;
+}
+#scrollBox {
+  height: 40%;
+  width: 100%;
+  border: 1px solid #ccc;
+  overflow-y: inherit;
+  padding: 10px;
 }
 p{
   font-weight: bolder;
@@ -17,10 +51,10 @@ ng-map {
   height:100%;
   position: absolute;
 }
-
+/*
 label{
   color: white;
-}
+}*/
 
 h1{
   font-size: 0px;
@@ -56,13 +90,24 @@ h1{
 
 ul{
   padding:none;
-  list-style: none
+  list-style: none;
+  float: left;
   }
 
   .messageInput{
     display: inline-block;
   }
 
+#foo-iw{
+
+    cursor: default;
+    position: absolute;
+    width: 403px;
+    height: 253px;
+    left: 563px;
+    top: -487px;
+    z-index: -487;
+}
 
 
 /*.gm-style-iw{

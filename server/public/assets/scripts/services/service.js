@@ -9,7 +9,7 @@ myApp.service('getService',['$http', function($http){
       method:'GET',
       url:'/user/getItems/' + location
     }).then(function(res) {
-      console.log('get from service', res.data);
+      // console.log('get from service', res.data);
       service.items.shelfItems = res.data;
       return res.data;
     });

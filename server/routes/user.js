@@ -22,13 +22,13 @@ router.get('/', function(req, res) {
 // clear all server session information about this user
 router.get('/logout', function(req, res) {
   // Use passport's built-in method to log out the user
-  console.log('Logged out');
+  // console.log('Logged out');
   req.logOut();
   res.sendStatus(200);
 });
 
 router.post('/AddItem', function(req,res){
-  console.log('newItem ->', req.body);
+  // console.log('newItem ->', req.body);
   var newItem = new itemModel(req.body);
   if (req.isAuthenticated() ) {
     newItem.save(function(err) {
@@ -42,15 +42,15 @@ router.post('/AddItem', function(req,res){
       }
     });
   } else {
-    console.log('User id did', req.body.user, 'not match with ', req.user._id)
+    // console.log('User id did', req.body.user, 'not match with ', req.user._id)
     res.sendStatus(403);
   }
 })
 
 router.get('/getItems/:location', function(req, res){
-  console.log('in Router.GET', req.params.location);
+  // console.log('in Router.GET', req.params.location);
   itemModel.find({location:req.params.location}).then(function(data){
-    console.log(data);
+    // console.log(data);
     res.send(data);
   })
 })
