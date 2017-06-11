@@ -28,49 +28,49 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
 
     vm.shops = [ //array of basketball location objects
       {id:'grand',  image:"url('/assets/styles/ghlt.jpg')", roster:' 0', Location: 'Grande Hotel', nextGame: '11:30am', position:[44.975923, -93.268808], times: [
-      	[], // Sunday
+      	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
-        [], // Tuesday
+        ['none'], // Tuesday
         ['6:00am', '11:30pm'], // Wednesday
-        [], // Thursday
+        ['none'], // Thursday
         ['6:00am', '11:30am'], // Friday
-      	[] // Saturday
+      	['none'] // Saturday
       ], address:'615 2nd Ave S, Minneapolis, MN 55402'},
       {id:'cross',  image:"url('/assets/styles/ctlt.jpg')", roster:' 0', Location: 'Crosstown', nextGame: '11:30am', position:[44.8897309, -93.4457767], times: [
-      	[], // Sunday
+      	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
-        [], // Tuesday
+        ['none'], // Tuesday
         ['6:00am', '11:30pm'], // Wednesday
-        [], // Thursday
+        ['none'], // Thursday
         ['6:00am', '11:30am'], // Friday
-      	[] // Saturday
+      	['none'] // Saturday
       ], address:'6233 Baker Rd, Eden Prairie, MN 55346'},
       {id:'louis',  image:"url('/assets/styles/splt.jpg')", roster:' 0', Location: 'St Louis Park', nextGame: '11:30am', position:[44.961798, -93.349895],times: [
-      	[], // Sunday
+      	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
-        [], // Tuesday
+        ['none'], // Tuesday
         ['6:00am', '11:30pm'], // Wednesday
-        [], // Thursday
+        ['none'], // Thursday
         ['6:00am', '11:30am'], // Friday
-      	[] // Saturday
+      	['none'] // Saturday
       ],address:'5525 Cedar Lake Rd, St Louis Park, MN 55416'},
       {id:'ep', image:"url('/assets/styles/eplt.jpg')", roster:' 0', Location: 'Eden Prairie', nextGame: '11:30am', position:[44.85615401, -93.43660712], times: [
-      	[], // Sunday
+      	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
-        [], // Tuesday
+        ['none'], // Tuesday
         ['6:00am', '11:30pm'], // Wednesday
-        [], // Thursday
+        ['none'], // Thursday
         ['6:00am', '11:30am'], // Friday
-      	[] // Saturday
+      	['none'] // Saturday
       ],address:'755 Prairie Center Dr, Eden Prairie, MN 55344'},
       {id:'target', image:"url('/assets/styles/tclt.jpg')", roster:' 0', Location: 'Target Center', nextGame: '11:30am', position:[44.979527, -93.276157],times: [
-      	[], // Sunday
+      	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
-        [], // Tuesday
+        ['none'], // Tuesday
         ['6:00am', '11:30pm'], // Wednesday
-        [], // Thursday
+        ['none'], // Thursday
         ['6:00am', '11:30am'], // Friday
-      	[] // Saturday
+      	['none'] // Saturday
       ],address:'600 N 1st Ave, Minneapolis, MN 55403'}
     ];// end location objects
     vm.shop = vm.shops[0];
@@ -85,6 +85,9 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
 
 
     };
+    var today = moment();
+console.log(today);
+
 
     vm.hideDetail = function() { //need to review and possible remove
       vm.map.hideInfoWindow('map-canvas');

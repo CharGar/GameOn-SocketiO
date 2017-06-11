@@ -8,6 +8,11 @@
     height: 400px !important;*/
 
   }
+
+
+  .btn{
+    opacity: 1;
+  }
   .ng-map-info-window div:first-child > div:nth-child(1) {
     border-top-color: black !important;
     opacity: .7;
