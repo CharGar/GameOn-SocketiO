@@ -27,7 +27,7 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
     } //angular slide toggle end
 
     vm.shops = [ //array of basketball location objects
-      {id:'grand',  image:"url('/assets/styles/ghlt.jpg')", roster:' 0', Location: 'Grande Hotel', nextGame: '11:30am', position:[44.975923, -93.268808], times: [
+      {id:'grand',  image:"url('/assets/styles/ghlt.jpg')", roster:[' ryan b', ' ben', ' jake'], count: '3', Location: 'Grande Hotel', nextGame: '11:30am', position:[44.975923, -93.268808], times: [
       	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
         ['none'], // Tuesday
@@ -36,7 +36,7 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
         ['6:00am', '11:30am'], // Friday
       	['none'] // Saturday
       ], address:'615 2nd Ave S, Minneapolis, MN 55402'},
-      {id:'cross',  image:"url('/assets/styles/ctlt.jpg')", roster:' 0', Location: 'Crosstown', nextGame: '11:30am', position:[44.8897309, -93.4457767], times: [
+      {id:'cross',  image:"url('/assets/styles/ctlt.jpg')", roster:' 0', count: '10', Location: 'Crosstown', nextGame: '11:30am', position:[44.8897309, -93.4457767], times: [
       	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
         ['none'], // Tuesday
@@ -45,7 +45,7 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
         ['6:00am', '11:30am'], // Friday
       	['none'] // Saturday
       ], address:'6233 Baker Rd, Eden Prairie, MN 55346'},
-      {id:'louis',  image:"url('/assets/styles/splt.jpg')", roster:' 0', Location: 'St Louis Park', nextGame: '11:30am', position:[44.961798, -93.349895],times: [
+      {id:'louis',  image:"url('/assets/styles/splt.jpg')", roster:' 0', count: '10', Location: 'St Louis Park', nextGame: '11:30am', position:[44.961798, -93.349895],times: [
       	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
         ['none'], // Tuesday
@@ -54,7 +54,7 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
         ['6:00am', '11:30am'], // Friday
       	['none'] // Saturday
       ],address:'5525 Cedar Lake Rd, St Louis Park, MN 55416'},
-      {id:'ep', image:"url('/assets/styles/eplt.jpg')", roster:' 0', Location: 'Eden Prairie', nextGame: '11:30am', position:[44.85615401, -93.43660712], times: [
+      {id:'ep', image:"url('/assets/styles/eplt.jpg')", roster:[' chris', ' damon', ' devin', ' kevin', ' tim', ' bigBear', ' aria', ' scott', ' connor', ' zach'], count: '10', Location: 'Eden Prairie', nextGame: '11:30am', position:[44.85615401, -93.43660712], times: [
       	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
         ['none'], // Tuesday
@@ -63,7 +63,7 @@ myApp.controller('UserController', ['$http', '$location', 'NgMap','$scope',
         ['6:00am', '11:30am'], // Friday
       	['none'] // Saturday
       ],address:'755 Prairie Center Dr, Eden Prairie, MN 55344'},
-      {id:'target', image:"url('/assets/styles/tclt.jpg')", roster:' 0', Location: 'Target Center', nextGame: '11:30am', position:[44.979527, -93.276157],times: [
+      {id:'target', image:"url('/assets/styles/tclt.jpg')", roster:[' chris', ' damon', ' devin', ' kevin', ' tim', ' bigBear', ' aria', ' scott', ' connor', ' zach'], count: '10', Location: 'Target Center', nextGame: '11:30am', position:[44.979527, -93.276157],times: [
       	['none'], // Sunday
         ['6:00am', '11:30am', '5:00pm'], // Monday
         ['none'], // Tuesday
@@ -183,6 +183,23 @@ setInterval(function() {
 }, 1000, 1);
 
 
+$scope.hovering = false;
+
+   // create the timer variable
+   var timer;
+
+   // mouseenter event
+   $scope.showIt = function () {
+       timer = $timeout(function () {
+           $scope.hovering = true;
+       }, 5);
+   };
+
+   // mouseleave event
+   $scope.hideIt = function () {
+       $timeout.cancel(timer);
+       $scope.hovering = false;
+   };
 
 
 
