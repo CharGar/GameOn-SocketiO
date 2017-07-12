@@ -1,3 +1,7 @@
+#GAME ON!!!!!!  
+This is a full-stack application that allows lifetime athletic members to signup and for weekly basketball games, view roster of signed up players, see a map of all participating locations, and chat with each lifetime location/group roster. Fellow ballers, game on!
+
+
 # Express/Passport Lecture Starting File
 Download and run 'npm install' before the lecture as prep. In this lecture, we will build out a user registration page and allow our users to log into our application. Once they are logged in, we will see information returned to us, specific to the user.
 
